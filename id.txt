@@ -1,0 +1,43 @@
+Main
+name stdnum roomnum total notice_board free_board test test2
+
+Free
+search_free write_free write_list
+
+Search
+search container
+
+View
+post_button comm_list comment comm_ok page post_mod post_del _close
+page2 post_copy post_rep _close2 
+
+Write
+Enroll title content 
+
+Notice
+search_notice write_notice notice_list
+
+Notice search
+search_n container_n
+
+Notice std
+search_std std_list
+
+Notice view
+notice_post_button notice_title notice_content notice_page notice_post_mod
+notice_post_del notice_close
+
+Notice view2
+std_title std_content
+
+Notice write
+notice_write_title notice_write_content notice_Enroll
+
+list_item.xml
+list_title list_time list_cnt
+
+comment_list.xml
+comm_comment comm_time comm_button
+
+header.xml
+view_title view_content comm_cnt
