@@ -15,6 +15,16 @@
         <activity android:name=".NoticeActivity" />
         <activity android:name=".Gradeclass" />
         <activity android:name=".mainclass" />
+        <activity android:name=".NoticeView2"> </activity>
+        <activity android:name=".NoticeStd" />
+        <activity android:name=".Notice"/>
+        <activity android:name=".FreeActivity" />
+        <activity android:name=".FreeSearch" />
+        <activity android:name=".NoticeSearch" />
+        <activity android:name=".NoticeView" />
+        <activity android:name=".NoticeWrite" />
+        <activity android:name=".ViewActivity" />
+        <activity android:name=".WriteActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
