@@ -84,7 +84,7 @@ public class mainclass extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray noticelist = jsonObject.getJSONArray("response");
-                            Intent intent = new Intent(mainclass.this,NoticeActivity.class);
+                            Intent intent = new Intent(mainclass.this,Notice.class);
                             intent.putExtra("studentnum",studentnum);
                             intent.putExtra("name",name);
                             intent.putExtra("list",noticelist.toString());

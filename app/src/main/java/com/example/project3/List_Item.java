@@ -1,4 +1,4 @@
-package com.example.bulletin_board;
+package com.example.project3;
 
 public class List_Item {
     private String title;

@@ -1,4 +1,4 @@
-package com.example.bulletin_board;
+package com.example.project3;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +9,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.project3.R;
+
 public class Notice extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notice_);
+        setContentView(R.layout.activity_notice);
 
         //글쓰기
         Button button = findViewById(R.id.write_notice);
@@ -46,9 +48,6 @@ public class Notice extends AppCompatActivity {
 
             }
         });
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
     }
 }

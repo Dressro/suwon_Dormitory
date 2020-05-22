@@ -1,4 +1,4 @@
-package com.example.project3;
+/*package com.example.project3;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,4 +81,4 @@ public class NoticeActivity extends AppCompatActivity {
 
 
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package com.example.bulletin_board;
+package com.example.project3;
 
 import android.widget.Button;
 
