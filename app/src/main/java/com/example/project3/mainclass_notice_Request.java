@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class mainclass_notice_Request extends StringRequest {
-    final static private String URL = "http://14.37.200.80/project/noticelist.php";
+    final static private String URL = "http:///project/noticelist.php";
     Map<String,String> para;
     public mainclass_notice_Request(Response.Listener<String> listener){
         super(Method.POST,URL,listener,null);

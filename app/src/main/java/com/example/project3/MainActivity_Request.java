@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity_Request extends StringRequest {
-    final static private String URL = "http://14.37.200.80/project/projectlogin.php";
+    final static private String URL = "http:///project/projectlogin.php";
     private Map<String,String> para;
     public MainActivity_Request(String studentnum, String Password, Response.Listener<String> listener){
         super(Method.POST,URL,listener,null);
