@@ -125,5 +125,12 @@ public class mainclass extends AppCompatActivity {
             }
 
         });
+        go_outButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mainclass.this,go_out.class);
+                startActivity(intent);
+            }
+        });
     }
 }
