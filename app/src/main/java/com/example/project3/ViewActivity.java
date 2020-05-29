@@ -1,4 +1,4 @@
-package com.example.project3;
+package com.example.bulletin_board;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.project3.R;
 
 public class ViewActivity extends AppCompatActivity {
     RelativeLayout header;
@@ -51,13 +54,6 @@ public class ViewActivity extends AppCompatActivity {
         Button button2 = findViewById(R.id.post_mod);
         Button button3 = findViewById(R.id.post_del);
 
-        page.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                page.startAnimation(anim_down);
-                page.setVisibility(View.INVISIBLE);
-            }
-        });
         //타게시물/댓글 버튼
         Button button11 = findViewById(R.id.post_copy);
         Button button22 = findViewById(R.id.post_rep);
@@ -67,6 +63,24 @@ public class ViewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 page2.startAnimation(anim_down);
                 page2.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        final EditText comment = findViewById(R.id.comment);
+        Button comm_btn = findViewById(R.id.comm_ok);
+        comm_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String comm_txt = comment.getText().toString();
+                //댓글 등록할 때 시간도 같이
+            }
+        });
+
+        page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                page.startAnimation(anim_down);
+                page.setVisibility(View.INVISIBLE);
             }
         });
 

@@ -8,22 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class WriteActivity extends AppCompatActivity {
-    private EditText Title;
-    private EditText Content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
-        Title = findViewById(R.id.title);
-        Content = findViewById(R.id.content);
+
+        final EditText Title = findViewById(R.id.title);
+        final EditText Content = findViewById(R.id.content);
 
         //글 등록하면 뒤로가기
         Button button = findViewById(R.id.Enroll);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //제목/내용저장
+                String free_title = Title.getText().toString();
+                String free_content = Content.getText().toString();
+                //버튼 누르면 등록 시간도 같이 넘어가게
                 onBackPressed();
             }
         });
