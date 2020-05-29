@@ -31,7 +31,7 @@ public class mainclass extends AppCompatActivity {
         // 변수
         final String studentnum = intent.getStringExtra("studentnum");
         final String name = intent.getStringExtra("name");
-        String roomnum = intent.getStringExtra("roomnum");
+        final String roomnum = intent.getStringExtra("roomnum");
         int plus = intent.getIntExtra("plus",0);
         int minus = intent.getIntExtra("minus",0);
         int total = intent.getIntExtra("total",0);
@@ -129,7 +129,11 @@ public class mainclass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mainclass.this,go_out.class);
+                intent.putExtra("studentnum",studentnum);
+                intent.putExtra("name",name);
+                intent.putExtra("roomnum",roomnum);
                 startActivity(intent);
+                finish();
             }
         });
     }

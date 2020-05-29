@@ -36,14 +36,14 @@ public class FreeActivity extends AppCompatActivity {
         });
 
         ListView listView = findViewById(R.id.write_list);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ViewActivity.class);
                 //게시글로 이동
                 startActivity(intent);
             }
-        });
+        });*/
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
