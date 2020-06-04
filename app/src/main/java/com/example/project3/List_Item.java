@@ -1,5 +1,6 @@
 package com.example.project3;
 
+//공지 리스트뷰
 public class List_Item {
     private String title;
     private String  time;

@@ -10,13 +10,14 @@ import android.widget.TextView;
 import com.example.project3.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Adapter_list extends BaseAdapter {
     private Context context;
-    private ArrayList<String> arrayList;
+    private List<String> arrayList;
     private ViewHolder viewHolder;
 
-    public Adapter_list(Context context, ArrayList arrayList) {
+    public Adapter_list(Context context, List arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
