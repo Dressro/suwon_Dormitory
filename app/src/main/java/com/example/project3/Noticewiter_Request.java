@@ -7,12 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Noticewiter_Request extends StringRequest {
-    final static private String URL = "http:///project/noticeenroll.php";
+    final static private String URL = "http://14.37.200.80/project/noticeenroll.php";
     private Map<String,String> para;
-    public Noticewiter_Request(String subtitle, String title, String content, Response.Listener<String> listener){
+    public Noticewiter_Request(String title, String content, Response.Listener<String> listener){
         super(Method.POST,URL,listener,null);
         para = new HashMap<>();
-        para.put("subtitle",subtitle);
         para.put("title",title);
         para.put("content",content);
     }

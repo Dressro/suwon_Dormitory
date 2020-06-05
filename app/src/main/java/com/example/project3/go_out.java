@@ -56,12 +56,7 @@ public class go_out extends AppCompatActivity {
                                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                Intent intent = new Intent(go_out.this,mainclass.class);
-                                                intent.putExtra("studentnum",studentnum);
-                                                intent.putExtra("name",studentname);
-                                                intent.putExtra("roomnum",roomnum);
-                                                startActivity(intent);
-                                                finish();
+                                                onBackPressed();
                                             }
                                         })
                                         .create()

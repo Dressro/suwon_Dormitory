@@ -9,27 +9,28 @@ import android.widget.TextView;
 
 import com.example.project3.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_list extends BaseAdapter {
     private Context context;
-    private List<String> arrayList;
-    private ViewHolder viewHolder;
+    private List<List_Item> list_items;
 
-    public Adapter_list(Context context, List arrayList) {
+    public Adapter_list(Context context, List<List_Item> list_items) {
         this.context = context;
-        this.arrayList = arrayList;
+        this.list_items = list_items;
     }
 
     @Override
     public int getCount() {
-        return arrayList.size();
+        return list_items.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return arrayList.get(position);
+        return list_items.get(position);
     }
 
     @Override
@@ -39,30 +40,17 @@ public class Adapter_list extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
+        View v = View.inflate(context,R.layout.list_item,null);
+        TextView list_title_text = v.findViewById(R.id.list_title);
+        TextView list_time_text = v.findViewById(R.id.list_time);
+        TextView list_cnt_text = v.findViewById(R.id.list_cnt);
 
-        // View에 Data 세팅
-        viewHolder.txt_title.setText(arrayList.get(position));
-        viewHolder.txt_time.setText(arrayList.get(position));
-        viewHolder.txt_cnt.setText(arrayList.get(position));
+        list_title_text.setText(list_items.get(position).getTitle());
+        list_time_text.setText(list_items.get(position).getTime());
+        list_cnt_text.setText(list_items.get(position).getNum());
 
-        return convertView;
-    }
-    public class ViewHolder {
-        private TextView txt_title;
-        private TextView txt_time;
-        private TextView txt_cnt;
+        v.setTag(list_items.get(position).getTitle());
 
-        public ViewHolder(View convertView) {
-            txt_title = (TextView) convertView.findViewById(R.id.list_title);
-            txt_time = (TextView) convertView.findViewById(R.id.list_time);
-            txt_cnt = (TextView) convertView.findViewById(R.id.list_cnt);
-        }
+        return v;
     }
 }

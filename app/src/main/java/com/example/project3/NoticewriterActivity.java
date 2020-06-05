@@ -34,7 +34,6 @@ public class NoticewriterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = title_Text.getText().toString();
                 String content = main_content.getText().toString();
-                String subtitle = subtitle_spinner.getSelectedItem().toString();
                 Response.Listener<String> respon = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -65,7 +64,7 @@ public class NoticewriterActivity extends AppCompatActivity {
                         }
                     }
                 };
-                Noticewiter_Request noticewiter_request = new Noticewiter_Request(subtitle,title,content,respon);
+                Noticewiter_Request noticewiter_request = new Noticewiter_Request(title,content,respon);
                 RequestQueue queue = Volley.newRequestQueue(NoticewriterActivity.this);
                 queue.add(noticewiter_request);
             }

@@ -11,6 +11,9 @@ import android.widget.ListView;
 
 import com.example.project3.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,24 +26,55 @@ public class Notice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice);
         //변수 설정
+        Button writebutton = findViewById(R.id.write_notice);
+        Button searchbutton = findViewById(R.id.search_notice);
+        Intent intent = getIntent();
+        String studentnum = intent.getStringExtra("studentnum");
+        String notice_list = intent.getStringExtra("list");
         listView = findViewById(R.id.notice_list);
         list_item = new ArrayList<List_Item>();
         adapter_list = new Adapter_list(getApplicationContext(),list_item);
         listView.setAdapter(adapter_list);
+        //설정
+        if(studentnum.equals("root")){
+            writebutton.setVisibility(View.VISIBLE);
+        }
+        else{
+            writebutton.setVisibility(View.INVISIBLE);
+        }
+
         //메인
+        try{
+            JSONArray jsonArray = new JSONArray(notice_list);
+            int count = 0;
+            String title;
+            String time;
+            String cnt;
+           while(count < jsonArray.length()){
+                JSONObject jsonObject = jsonArray.getJSONObject(count);
+                title = jsonObject.getString("title");
+                time = jsonObject.getString("time");
+                cnt = String.valueOf(jsonObject.getInt("hits"));
+                List_Item list_item1 = new List_Item(title,time,cnt);
+                list_item.add(list_item1);
+                count++;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         //글쓰기
-        Button button = findViewById(R.id.write_notice);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        writebutton .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Notice.this, NoticeWrite.class);
+                Intent intent = new Intent(Notice.this, NoticewriterActivity.class);
                 startActivity(intent);
             }
         });
 
         //검색
-        Button button1 = findViewById(R.id.search_notice);
-        button1.setOnClickListener(new View.OnClickListener() {
+
+        searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Notice.this, NoticeSearch.class);

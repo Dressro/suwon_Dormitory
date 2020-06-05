@@ -20,7 +20,7 @@ public class FreeActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), WriteActivity.class);
+                Intent intent = new Intent(FreeActivity.this, WriteActivity.class);
                 startActivity(intent);
             }
         });
@@ -30,22 +30,10 @@ public class FreeActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FreeSearchActivity.class);
+                Intent intent = new Intent(FreeActivity.this, FreeSearchActivity.class);
                 startActivity(intent);
             }
         });
 
-        ListView listView = findViewById(R.id.write_list);
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ViewActivity.class);
-                //게시글로 이동
-                startActivity(intent);
-            }
-        });*/
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
     }
 }

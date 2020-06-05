@@ -4,7 +4,13 @@ package com.example.project3;
 public class List_Item {
     private String title;
     private String  time;
-    private int num;
+    private String num;
+
+    public List_Item(String title, String time, String num) {
+        this.title = title;
+        this.time = time;
+        this.num = num;
+    }
 
     public String getTitle() {
         return title;
@@ -22,11 +28,11 @@ public class List_Item {
         this.time = time;
     }
 
-    public int getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(String num) {
         this.num = num;
     }
 }

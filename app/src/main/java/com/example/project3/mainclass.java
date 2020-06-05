@@ -133,7 +133,13 @@ public class mainclass extends AppCompatActivity {
                 intent.putExtra("name",name);
                 intent.putExtra("roomnum",roomnum);
                 startActivity(intent);
-                finish();
+            }
+        });
+        free_tableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mainclass.this,FreeActivity.class);
+                startActivity(intent);
             }
         });
     }
