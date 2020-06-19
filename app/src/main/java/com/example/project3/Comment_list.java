@@ -2,10 +2,17 @@ package com.example.project3;
 
 import android.widget.Button;
 
+//댓글
 public class Comment_list {
-    private String comment;
-    private String time;
-    private Button button;
+    String comment;
+    String time;
+    Button button;
+
+    public Comment_list(String comment, String time, Button button) {
+        this.comment = comment;
+        this.time = time;
+        this.button = button;
+    }
 
     public String getComment() {
         return comment;

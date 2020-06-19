@@ -9,15 +9,26 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FreeActivity extends AppCompatActivity {
+    private ListView listView;
+    private Adapter_list adapter_list;
+    private List<List_Item> list_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free);
 
-        Button button = findViewById(R.id.write_free);
-        button.setOnClickListener(new View.OnClickListener() {
+        listView = (ListView) findViewById(R.id.write_list);
+        list_item = new ArrayList<List_Item>();
+        adapter_list = new Adapter_list(getApplicationContext(),list_item);
+        listView.setAdapter(adapter_list);
+
+        Button write = findViewById(R.id.write_free);
+        write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FreeActivity.this, WriteActivity.class);
@@ -26,14 +37,16 @@ public class FreeActivity extends AppCompatActivity {
         });
 
         //검색
-        Button button1 = findViewById(R.id.search_free);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button search = findViewById(R.id.search_free);
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FreeActivity.this, FreeSearchActivity.class);
                 startActivity(intent);
             }
         });
+
+
 
     }
 }

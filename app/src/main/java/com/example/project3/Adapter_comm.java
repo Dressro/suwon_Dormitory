@@ -11,25 +11,25 @@ import android.widget.TextView;
 import com.example.project3.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Adapter_comm extends BaseAdapter {
     private Context context;
-    private ArrayList<String> arrayList;
-    private ViewHolder viewHolder;
+    private List<Comment_list> list_items;
 
-    public Adapter_comm(Context context, ArrayList arrayList) {
+    public Adapter_comm(Context context, List<Comment_list> list_items) {
         this.context = context;
-        this.arrayList = arrayList;
+        this.list_items = list_items;
     }
 
     @Override
     public int getCount() {
-        return arrayList.size();
+        return list_items.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return arrayList.get(position);
+        return list_items.get(position);
     }
 
     @Override
@@ -39,31 +39,17 @@ public class Adapter_comm extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.comment_list, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
+        View v = View.inflate(context,R.layout.comment_list,null);
+        TextView comm_comment_text = v.findViewById(R.id.comm_comment);
+        TextView comm_time_text = v.findViewById(R.id.comm_time);
+        Button comm_btn = v.findViewById(R.id.comm_button);
 
-        // View에 Data 세팅
-        viewHolder.txt_comment.setText(arrayList.get(position));
-        viewHolder.txt_time.setText(arrayList.get(position));
-        viewHolder.txt_btn.setText(arrayList.get(position));
+        comm_comment_text.setText(list_items.get(position).getComment());
+        comm_time_text.setText(list_items.get(position).getTime());
+        comm_btn.setText((CharSequence) list_items.get(position).getButton());
 
-        return convertView;
-    }
-    public class ViewHolder {
-        private TextView txt_comment;
-        private TextView txt_time;
-        private Button txt_btn;
+        v.setTag(list_items.get(position).getComment());
 
-        public ViewHolder(View convertView) {
-            txt_comment = (TextView) convertView.findViewById(R.id.comm_comment);
-            txt_time = (TextView) convertView.findViewById(R.id.comm_time);
-            txt_btn = (Button) convertView.findViewById(R.id.comm_button);
-        }
-
+        return v;
     }
 }

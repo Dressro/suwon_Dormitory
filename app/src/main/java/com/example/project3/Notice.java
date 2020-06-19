@@ -19,8 +19,8 @@ import java.util.List;
 
 public class Notice extends AppCompatActivity {
     private ListView listView;
-    private Adapter_list adapter_list;
-    private List<List_Item> list_item;
+    private Adapter_notice adapter_list;
+    private List<Notice_list> list_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +32,8 @@ public class Notice extends AppCompatActivity {
         String studentnum = intent.getStringExtra("studentnum");
         String notice_list = intent.getStringExtra("list");
         listView = (ListView) findViewById(R.id.notice_list);
-        list_item = new ArrayList<List_Item>();
-        adapter_list = new Adapter_list(getApplicationContext(),list_item);
+        list_item = new ArrayList<Notice_list>();
+        adapter_list = new Adapter_notice(getApplicationContext(),list_item);
         listView.setAdapter(adapter_list);
         //설정
         if(studentnum.equals("root")){
@@ -55,7 +55,7 @@ public class Notice extends AppCompatActivity {
                 title = jsonObject.getString("title");
                 time = jsonObject.getString("time");
                 cnt = String.valueOf(jsonObject.getInt("hits"));
-                List_Item list_item1 = new List_Item(title,time,cnt);
+                Notice_list list_item1 = new Notice_list(title,time,cnt);
                 list_item.add(list_item1);
                 count++;
             }

@@ -1,15 +1,12 @@
 package com.example.project3;
 
-//게시판 리스트뷰
-public class List_Item {
+public class Notice_list {
     String title;
-    String  time;
-    String num;
+    String time;
 
-    public List_Item(String title, String time, String num) {
+    public Notice_list(String title, String time, String num) {
         this.title = title;
         this.time = time;
-        this.num = num;
     }
 
     public String getTitle() {
@@ -28,11 +25,4 @@ public class List_Item {
         this.time = time;
     }
 
-    public String getNum() {
-        return num;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
-    }
 }
