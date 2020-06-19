@@ -29,8 +29,5 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
 
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
     }
 }

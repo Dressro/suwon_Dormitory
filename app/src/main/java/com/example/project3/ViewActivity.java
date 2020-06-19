@@ -101,7 +101,5 @@ public class ViewActivity extends AppCompatActivity {
         TextView content = header.findViewById(R.id.view_content);
         TextView count = header.findViewById(R.id.comm_cnt);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
     }
 }

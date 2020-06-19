@@ -31,7 +31,7 @@ public class Notice extends AppCompatActivity {
         Intent intent = getIntent();
         String studentnum = intent.getStringExtra("studentnum");
         String notice_list = intent.getStringExtra("list");
-        listView = findViewById(R.id.notice_list);
+        listView = (ListView) findViewById(R.id.notice_list);
         list_item = new ArrayList<List_Item>();
         adapter_list = new Adapter_list(getApplicationContext(),list_item);
         listView.setAdapter(adapter_list);
@@ -86,7 +86,7 @@ public class Notice extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Notice.this, NoticeView.class);
-                //게시글로 이동
+                intent.putExtra("title",list_item.get(position).title);
                 startActivity(intent);
 
             }

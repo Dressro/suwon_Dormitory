@@ -128,7 +128,7 @@ public class mainclass extends AppCompatActivity {
         go_outButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mainclass.this,go_out.class);
+                Intent intent = new Intent(mainclass.this,before_go_out.class);
                 intent.putExtra("studentnum",studentnum);
                 intent.putExtra("name",name);
                 intent.putExtra("roomnum",roomnum);

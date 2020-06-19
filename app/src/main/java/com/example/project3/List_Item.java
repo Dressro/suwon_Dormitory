@@ -2,9 +2,9 @@ package com.example.project3;
 
 //공지 리스트뷰
 public class List_Item {
-    private String title;
-    private String  time;
-    private String num;
+    String title;
+    String  time;
+    String num;
 
     public List_Item(String title, String time, String num) {
         this.title = title;
