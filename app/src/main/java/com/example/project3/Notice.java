@@ -54,8 +54,7 @@ public class Notice extends AppCompatActivity {
                 JSONObject jsonObject = jsonArray.getJSONObject(count);
                 title = jsonObject.getString("title");
                 time = jsonObject.getString("time");
-                cnt = String.valueOf(jsonObject.getInt("hits"));
-                Notice_list list_item1 = new Notice_list(title,time,cnt);
+                Notice_list list_item1 = new Notice_list(title,time);
                 list_item.add(list_item1);
                 count++;
             }

@@ -31,7 +31,7 @@ public class NoticeView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice_view);
         //변수 설정
-        page = findViewById(R.id.page); //글/댓글 작성자가 자신의 글/댓글에서 ...버튼을 눌렀을 때 나오는 수정/삭제 버튼
+        page = (LinearLayout) findViewById(R.id.page); //글/댓글 작성자가 자신의 글/댓글에서 ...버튼을 눌렀을 때 나오는 수정/삭제 버튼
         final TextView titleText = (TextView)findViewById(R.id.notice_title);
         final TextView contentText = (TextView)findViewById(R.id.notice_content);
         Intent intent = getIntent();
@@ -84,8 +84,8 @@ public class NoticeView extends AppCompatActivity {
        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                page.setVisibility(View.VISIBLE);
                 page.startAnimation(anim_up);
+                page.setVisibility(View.VISIBLE);
             }
         });
         //작성자용 버튼
@@ -94,7 +94,7 @@ public class NoticeView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 page.startAnimation(anim_down);
-                page.setVisibility(View.INVISIBLE);
+                page.setVisibility(View.GONE);
             }
         });
 

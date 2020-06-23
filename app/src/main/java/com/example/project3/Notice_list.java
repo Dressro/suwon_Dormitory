@@ -4,7 +4,7 @@ public class Notice_list {
     String title;
     String time;
 
-    public Notice_list(String title, String time, String num) {
+    public Notice_list(String title, String time) {
         this.title = title;
         this.time = time;
     }
