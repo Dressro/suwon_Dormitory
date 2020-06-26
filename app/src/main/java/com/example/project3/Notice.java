@@ -19,7 +19,7 @@ import java.util.List;
 
 public class Notice extends AppCompatActivity {
     private ListView listView;
-    //private NoticelistAdapter adapter_list;
+    private NoticelistAdapter adapter_list;
     private List<Noticelist> list_item;
 
     @Override
@@ -34,8 +34,8 @@ public class Notice extends AppCompatActivity {
         final String notice_list = intent.getStringExtra("list");
         listView = (ListView) findViewById(R.id.notice_list);
         list_item = new ArrayList<Noticelist>();
-        //adapter_list = new NoticelistAdapter(getApplicationContext(),list_item);
-        //listView.setAdapter(adapter_list);
+        adapter_list = new NoticelistAdapter(getApplicationContext(),list_item);
+        listView.setAdapter(adapter_list);
         //설정
         if(studentnum.equals("root")){
             writebutton.setVisibility(View.VISIBLE);

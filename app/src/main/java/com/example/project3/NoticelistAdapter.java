@@ -7,24 +7,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.List;
-//공지리스트
-public class Adapter_notice extends BaseAdapter {
-    private Context context;
-    private List<Notice_list> notice_list;
 
-    public Adapter_notice(Context context, List<Notice_list> notice_list) {
+public class NoticelistAdapter extends BaseAdapter {
+    private Context context;
+    private List<Noticelist> noticelists;
+
+    public NoticelistAdapter(Context context, List<Noticelist> noticelists) {
         this.context = context;
-        this.notice_list = notice_list;
+        this.noticelists = noticelists;
     }
 
     @Override
     public int getCount() {
-        return notice_list.size();
+        return noticelists.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return notice_list.get(position);
+        return noticelists.get(position);
     }
 
     @Override
@@ -35,13 +35,13 @@ public class Adapter_notice extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = View.inflate(context,R.layout.noticelistview,null);
-        TextView list_title_text = v.findViewById(R.id.no_list_title);
-        TextView list_time_text = v.findViewById(R.id.no_list_time);
+        TextView subtitle_text = v.findViewById(R.id.subtitle_Text);
+        TextView title_text = v.findViewById(R.id.title_Text);
 
-        list_title_text.setText(notice_list.get(position).getTitle());
-        list_time_text.setText(notice_list.get(position).getTime());
+        subtitle_text.setText(noticelists.get(position).getSubtitle());
+        title_text.setText(noticelists.get(position).getTitle());
 
-        v.setTag(notice_list.get(position).getTitle());
+        v.setTag(noticelists.get(position).getTitle());
 
         return v;
     }
