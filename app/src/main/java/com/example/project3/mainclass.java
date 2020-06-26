@@ -128,18 +128,49 @@ public class mainclass extends AppCompatActivity {
         go_outButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mainclass.this,before_go_out.class);
-                intent.putExtra("studentnum",studentnum);
-                intent.putExtra("name",name);
-                intent.putExtra("roomnum",roomnum);
-                startActivity(intent);
+                Response.Listener<String> respon = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array = jsonObject.getJSONArray("response");
+                            Intent intent = new Intent(mainclass.this,before_go_out.class);
+                            intent.putExtra("gooutlist",array.toString());
+                            intent.putExtra("studentnum",studentnum);
+                            intent.putExtra("roomnum",roomnum);
+                            intent.putExtra("name",name);
+                            startActivity(intent);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                mainclass_go_out_Request mainclass_go_out_request = new mainclass_go_out_Request(respon);
+                RequestQueue requestQueue = Volley.newRequestQueue(mainclass.this);
+                requestQueue.add(mainclass_go_out_request);
             }
         });
         free_tableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mainclass.this,FreeActivity.class);
-                startActivity(intent);
+                Response.Listener<String> respon = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array = jsonObject.getJSONArray("response");
+                            Intent intent = new Intent(mainclass.this,FreeActivity.class);
+                            intent.putExtra("freelist",array.toString());
+                            intent.putExtra("studentnum",studentnum);
+                            startActivity(intent);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                mainclass_FreeWrite_Request mainclass_freeWrite_request = new mainclass_FreeWrite_Request(respon);
+                RequestQueue queue = Volley.newRequestQueue(mainclass.this);
+                queue.add(mainclass_freeWrite_request);
             }
         });
     }

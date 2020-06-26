@@ -42,7 +42,7 @@
         android:background="#252525" />
 
     <EditText
-        android:id="@+id/title"
+        android:id="@+id/Freetitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -71,7 +71,7 @@
                 android:background="#454545" />
 
             <EditText
-                android:id="@+id/content"
+                android:id="@+id/Freecontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
