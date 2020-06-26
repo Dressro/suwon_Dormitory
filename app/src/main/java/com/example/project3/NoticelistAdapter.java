@@ -35,8 +35,8 @@ public class NoticelistAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = View.inflate(context,R.layout.noticelistview,null);
-        TextView subtitle_text = v.findViewById(R.id.subtitle_Text);
-        TextView title_text = v.findViewById(R.id.title_Text);
+        TextView subtitle_text = v.findViewById(R.id.no_list_title);
+        TextView title_text = v.findViewById(R.id.no_list_time);
 
         subtitle_text.setText(noticelists.get(position).getSubtitle());
         title_text.setText(noticelists.get(position).getTitle());
