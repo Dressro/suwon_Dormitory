@@ -11,7 +11,5 @@ public class FreeSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freesearch);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
     }
 }

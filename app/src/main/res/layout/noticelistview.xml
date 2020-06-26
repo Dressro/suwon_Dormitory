@@ -12,19 +12,22 @@
         android:paddingLeft="20dp">
 
         <TextView
-            android:id="@+id/no_list_title"
+            android:id="@+id/subtitle_Text"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="제목"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/no_list_time"
+            android:id="@+id/title_Text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="시간"
             android:textSize="12sp" />
 
     </LinearLayout>
+
+
 
 </LinearLayout>

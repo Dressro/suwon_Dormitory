@@ -25,7 +25,7 @@
                 android:layout_height="80dp"
                 android:inputType="textNoSuggestions"
                 tools:ignore="VectorDrawableCompat"
-                tools:srcCompat="@drawable/suwon_logo" />
+                android:background="@drawable/suwon_logo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +38,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="이름"
-                    android:textColor="#0000FF"
                     android:textSize="30sp"/>
 
                 <TextView
@@ -46,7 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="외박사유"
-                    android:textColor="#00FFFF"
                     android:textSize="24sp" />
             </LinearLayout>
         </LinearLayout>
