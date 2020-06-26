@@ -3,6 +3,7 @@ package com.example.project3;
 public class Noticelist {
     String subtitle;
     String title;
+
     public String getSubtitle() {
         return subtitle;
     }

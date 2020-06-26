@@ -10,15 +10,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/search_notice"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="25dp"
-            android:background="@android:drawable/ic_menu_search"
-            android:gravity="center" />
+
 
         <TextView
             android:layout_width="0dp"
@@ -31,7 +23,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/write_notice"
+            android:id="@+id/write_go_out"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="55dp"
             android:layout_height="30dp"
@@ -50,7 +42,7 @@
         android:background="#252525" />
 
     <ListView
-        android:id="@+id/notice_list"
+        android:id="@+id/go_out_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
