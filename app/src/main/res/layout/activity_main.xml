@@ -11,15 +11,16 @@
 
     <Button
         android:id="@+id/loginbutton"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/userPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="130dp"
+        android:layout_marginTop="20dp"
+        android:background="#032877"
         android:text="Log In"
-        android:background="@color/logincolor"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorWhite" />
 
         <EditText
             android:id="@+id/userPassword"

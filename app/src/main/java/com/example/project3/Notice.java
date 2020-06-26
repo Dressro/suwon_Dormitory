@@ -49,7 +49,6 @@ public class Notice extends AppCompatActivity {
             int count = 0;
             String title;
             String time;
-            String cnt;
            while(count < jsonArray.length()){
                 JSONObject jsonObject = jsonArray.getJSONObject(count);
                 title = jsonObject.getString("title");
