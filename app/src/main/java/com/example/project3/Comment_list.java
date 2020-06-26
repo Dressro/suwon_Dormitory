@@ -8,10 +8,9 @@ public class Comment_list {
     String time;
     Button button;
 
-    public Comment_list(String comment, String time, Button button) {
+    public Comment_list(String comment, String time) {
         this.comment = comment;
         this.time = time;
-        this.button = button;
     }
 
     public String getComment() {

@@ -161,6 +161,7 @@ public class mainclass extends AppCompatActivity {
                             JSONArray array = jsonObject.getJSONArray("response");
                             Intent intent = new Intent(mainclass.this,FreeActivity.class);
                             intent.putExtra("freelist",array.toString());
+                            intent.putExtra("studentnum",studentnum);
                             startActivity(intent);
                         }catch (Exception e){
                             e.printStackTrace();

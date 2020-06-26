@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -26,6 +31,7 @@ public class FreeActivity extends AppCompatActivity {
         //변수 설정
         Intent intent = getIntent();
         String freelist = intent.getStringExtra("freelist");
+        final String studentnum = intent.getStringExtra("studentnum");
         listView = (ListView)findViewById(R.id.write_list);
         list_items = new ArrayList<List_Item>();
         adapter_list = new Adapter_list(getApplicationContext(),list_items);
@@ -55,6 +61,7 @@ public class FreeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FreeActivity.this, WriteActivity.class);
+                intent.putExtra("studentnum",studentnum);
                 startActivity(intent);
             }
         });
@@ -71,9 +78,26 @@ public class FreeActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(FreeActivity.this, ViewActivity.class);
-                intent.putExtra("title",list_items.get(position).title);
-                startActivity(intent);
+                final String title1 = list_items.get(position).title;
+                Response.Listener<String> respon = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array = jsonObject.getJSONArray("response");
+                            Intent intent = new Intent(FreeActivity.this, ViewActivity.class);
+                            intent.putExtra("title",title1);
+                            intent.putExtra("studentnum",studentnum);
+                            intent.putExtra("array",array.toString());
+                            startActivity(intent);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                FreeActivitycontent_Request freeActivitycontent_request = new FreeActivitycontent_Request(list_items.get(position).title,respon);
+                RequestQueue queue = Volley.newRequestQueue(FreeActivity.this);
+                queue.add(freeActivitycontent_request);
 
             }
         });

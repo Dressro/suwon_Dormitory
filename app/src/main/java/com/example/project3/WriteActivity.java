@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.textclassifier.TextLinks;
@@ -25,6 +26,8 @@ public class WriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
+        Intent intent = getIntent();
+        final String studentnum = intent.getStringExtra("studentnum");
 
         final EditText freeWriteTitle = findViewById(R.id.Freetitle);
         final EditText freeWriteContent = findViewById(R.id.Freecontent);
@@ -66,7 +69,7 @@ public class WriteActivity extends AppCompatActivity {
                         }
                     }
                 };
-                Writer_Request writer_request = new Writer_Request(free_title,free_content,respon);
+                Writer_Request writer_request = new Writer_Request(studentnum,free_title,free_content,respon);
                 RequestQueue queue = Volley.newRequestQueue(WriteActivity.this);
                 queue.add(writer_request);
             }
