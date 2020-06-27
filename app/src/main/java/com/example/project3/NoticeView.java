@@ -99,12 +99,12 @@ public class NoticeView extends AppCompatActivity {
         });
 
 
-        page.setOnClickListener(new View.OnClickListener() {
+        /*page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 page.startAnimation(anim_down);
                 page.setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
     }
 }

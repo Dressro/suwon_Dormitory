@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -25,7 +26,9 @@ import com.example.project3.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ViewActivity extends AppCompatActivity {
@@ -37,6 +40,8 @@ public class ViewActivity extends AppCompatActivity {
     Animation anim_down;
     LinearLayout page, page2;
 
+    String contentlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +49,12 @@ public class ViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String title = intent.getStringExtra("title");
-        final String contentlist = intent.getStringExtra("array");
+        contentlist = intent.getStringExtra("array");
         final String studentnum = intent.getStringExtra("studentnum");
-
+        long now = System.currentTimeMillis();
+        Date mReDate = new Date(now);
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy.MM.dd");
+        final String formatDate = mFormat.format(mReDate);
         page = findViewById(R.id.page); //글/댓글 작성자가 자신의 글/댓글에서 ...버튼을 눌렀을 때 나오는 수정/삭제 버튼
         page2 = findViewById(R.id.page2); //다른사람의 글/댓글 ...버튼을 눌렀을 때 나오는 내용복사/신고 버튼
 
@@ -92,6 +100,12 @@ public class ViewActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.comm_list);
         header = (RelativeLayout)getLayoutInflater().inflate(R.layout.header, null, false);
         listView.addHeaderView(header);
+        final TextView title_text = header.findViewById(R.id.view_title);
+        final TextView content_text = header.findViewById(R.id.view_content);
+        final TextView count = header.findViewById(R.id.comm_cnt);
+        final Handler delayHandler = new Handler();
+
+
 
         comment_lists = new ArrayList<Comment_list>();
         adapter_comm = new Adapter_comm(getApplicationContext(),comment_lists);
@@ -115,6 +129,22 @@ public class ViewActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 comment.setText(null);
+                                                Response.Listener<String> respon1 = new Response.Listener<String>() {
+                                                    @Override
+                                                    public void onResponse(String response) {
+                                                        try{
+                                                            JSONObject jsonObject = new JSONObject(response);
+                                                            JSONArray array = jsonObject.getJSONArray("response");
+                                                            contentlist = array.toString();
+                                                        }catch(Exception e){
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+                                                };
+                                                FreeActivitycontent_Request freeActivitycontent_request = new FreeActivitycontent_Request(title,respon1);
+                                                RequestQueue queue1 = Volley.newRequestQueue(ViewActivity.this);
+                                                queue1.add(freeActivitycontent_request);
+
                                             }
                                         })
                                         .create()
@@ -129,8 +159,32 @@ public class ViewActivity extends AppCompatActivity {
                 View_Request view_request = new View_Request(title,comm_txt,respon);
                 RequestQueue queue = Volley.newRequestQueue(ViewActivity.this);
                 queue.add(view_request);
+
+                comment_lists.clear();
+                try{
+                    JSONArray jsonArray = new JSONArray(contentlist);
+                    int count1 = 0;
+                    String content;
+                    String time;
+                    while(count1< jsonArray.length()){
+                        JSONObject jsonObject = jsonArray.getJSONObject(count1);
+                        content = jsonObject.getString("content");
+                        time = jsonObject.getString("time");
+                        Comment_list list_item1 = new Comment_list(content,time);
+                        comment_lists.add(list_item1);
+                        count1++;
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                Comment_list list_item1 = new Comment_list(comm_txt,formatDate);
+                comment_lists.add(list_item1);
+                adapter_comm.notifyDataSetChanged();
             }
         });
+
+
+
 
         page.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,9 +202,7 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
-        final TextView title_text = header.findViewById(R.id.view_title);
-        final TextView content_text = header.findViewById(R.id.view_content);
-        final TextView count = header.findViewById(R.id.comm_cnt);
+
         // title , content 텍스트 변경
         Response.Listener<String> respon = new Response.Listener<String>() {
             @Override
@@ -159,9 +211,9 @@ public class ViewActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     Boolean success = jsonObject.getBoolean("success");
                     if(success){
-                        String title = jsonObject.getString("title");
+                        String title1 = jsonObject.getString("title");
                         String content = jsonObject.getString("content");
-                        title_text.setText(title);
+                        title_text.setText(title1);
                         content_text.setText(content);
                     }else{
                         AlertDialog.Builder builder = new AlertDialog.Builder(ViewActivity.this);
@@ -180,7 +232,7 @@ public class ViewActivity extends AppCompatActivity {
                 }
             }
         };
-        FreeActivityView_Request freeActivityView_request = new FreeActivityView_Request(studentnum,title,respon);
+        FreeActivityView_Request freeActivityView_request = new FreeActivityView_Request(title,respon);
         RequestQueue queue = Volley.newRequestQueue(ViewActivity.this);
         queue.add(freeActivityView_request);
         // 댓글 리스트 가지고 와서 적용
@@ -189,7 +241,7 @@ public class ViewActivity extends AppCompatActivity {
             int count1 = 0;
             String content;
             String time;
-            while(count1 + 3 < jsonArray.length() + 3){
+            while(count1 < jsonArray.length() ){
                 JSONObject jsonObject = jsonArray.getJSONObject(count1);
                 content = jsonObject.getString("content");
                 time = jsonObject.getString("time");
