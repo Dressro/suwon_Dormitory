@@ -35,13 +35,6 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/subtitlespinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/subtitle"
-        android:background="@drawable/under_drawable"
-        />
 
     <ScrollView
         android:layout_width="match_parent"

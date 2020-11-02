@@ -41,11 +41,11 @@ public class mainclass extends AppCompatActivity {
         Button free_tableButton = (Button)findViewById(R.id.button4);
         Button gradeaddButton = (Button)findViewById(R.id.button5);
         TextView nameText = (TextView)findViewById(R.id.nameText);
-
         TextView totalText = (TextView)findViewById(R.id.totalText);
         TextView studentText = (TextView)findViewById(R.id.studentnumText);
         TextView roomText = (TextView)findViewById(R.id.roomnumText);
-
+        TextView rootText = (TextView)findViewById(R.id.rootText);
+        TextView studentnumText = (TextView)findViewById(R.id.studentText);
         //화면 View 설정
         roomText.setText("방 번호: " + roomnum);
         studentText.setText(studentnum);
@@ -69,10 +69,14 @@ public class mainclass extends AppCompatActivity {
         if(studentnum.equals("root")){
             numButton.setVisibility(View.INVISIBLE);
             gradeaddButton.setVisibility(View.VISIBLE);
+            studentnumText.setVisibility(View.INVISIBLE);
+            rootText.setVisibility(View.VISIBLE);
         }
         else{
             numButton.setVisibility(View.VISIBLE);
             gradeaddButton.setVisibility(View.INVISIBLE);
+            studentnumText.setVisibility(View.VISIBLE);
+            rootText.setVisibility(View.INVISIBLE);
         }
         // 메인 소스
         noticeButton.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +128,13 @@ public class mainclass extends AppCompatActivity {
                 queue.add(mainclass_grade_request);
             }
 
+        });
+        gradeaddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(mainclass.this,gradeaddclass.class);
+                startActivity(intent);
+            }
         });
         go_outButton.setOnClickListener(new View.OnClickListener() {
             @Override

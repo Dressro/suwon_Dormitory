@@ -132,6 +132,7 @@
                 android:background="@drawable/grade" />
 
             <TextView
+                android:id="@+id/studentText"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/button3"
@@ -143,13 +144,25 @@
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="100dp"
                 android:layout_toRightOf="@+id/button"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                android:background="@drawable/grade"/>
+            <TextView
+                android:id="@+id/rootText"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button3"
+                android:layout_marginStart="40dp"
+                android:layout_toRightOf="@+id/button"
+                android:gravity="center"
+                android:text="상,벌점주기"
+                android:visibility="invisible"
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/button4"

@@ -2,6 +2,8 @@ package com.example.project3;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,11 +27,13 @@ public class FreeActivity extends AppCompatActivity {
     private Adapter_list adapter_list;
     private List<List_Item> list_items;
     String freelist;
+    public static Activity FreeActiv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free);
         //변수 설정
+        FreeActiv = FreeActivity.this;
         Intent intent = getIntent();
         freelist = intent.getStringExtra("freelist");
         final String studentnum = intent.getStringExtra("studentnum");
@@ -142,8 +146,5 @@ public class FreeActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }

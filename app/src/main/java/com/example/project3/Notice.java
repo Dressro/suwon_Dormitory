@@ -2,6 +2,8 @@ package com.example.project3;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,16 +23,18 @@ public class Notice extends AppCompatActivity {
     private ListView listView;
     private NoticelistAdapter adapter_list;
     private List<Noticelist> list_item;
+    public static Activity notice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice);
         //변수 설정
+        notice = Notice.this; // 화면 이름 설정
         Button writebutton = findViewById(R.id.write_notice);
         Button searchbutton = findViewById(R.id.search_notice);
         Intent intent = getIntent();
-        String studentnum = intent.getStringExtra("studentnum");
+        final String studentnum = intent.getStringExtra("studentnum");
         final String notice_list = intent.getStringExtra("list");
         listView = (ListView) findViewById(R.id.notice_list);
         list_item = new ArrayList<Noticelist>();
@@ -67,6 +71,7 @@ public class Notice extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Notice.this, NoticewriterActivity.class);
+                intent.putExtra("studentnum",studentnum);
                 startActivity(intent);
             }
         });
